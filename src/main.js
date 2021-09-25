@@ -72,32 +72,32 @@ export class Main extends React.Component {
         const c = Number(this.state.totalCountCheck)
 
         if (c > 0) {
-            for (var x = b; x > b - c; x--) {
+            for (var xDec = b; xDec > b - c; xDec--) {
                 if (this.state.stop) {
                     break;
                 }
-                const yy = "https://result.doenets.lk/result/service/OlResult?index=" + x + "&nic=";
+                const yy = "https://result.doenets.lk/result/service/OlResult?index=" + xDec + "&nic=";
                 const res = await this.httpGet(yy);
                 if (res.name !== null) {
                     this.setState({results: [...this.state.results, {
                             name : res.name,
                             res: this.processRes(res.subjectResults),
-                            indexNumber: x
+                            indexNumber: xDec
                         }]})
                 }
             }
         } else {
-            for (var x = b; x < b - c; x++) {
+            for (var xInc = b; xInc < b - c; xInc++) {
                 if (this.state.stop) {
                     break;
                 }
-                const yy = "https://result.doenets.lk/result/service/OlResult?index=" + x + "&nic=";
+                const yy = "https://result.doenets.lk/result/service/OlResult?index=" + xInc + "&nic=";
                 const res = await this.httpGet(yy);
                 if (res.name !== null) {
                     this.setState({results: [...this.state.results, {
                             name : res.name,
                             res: this.processRes(res.subjectResults),
-                            indexNumber: x
+                            indexNumber: xInc
                             //subRes: JSON.stringify(res.subjectResults)
                         }]})
                 }
